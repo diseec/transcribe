@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.py[cod]
+.env
+
+# Records and transcripts are personal data and can always be regenerated from
+# the source media, so neither the inputs nor the outputs belong in git.
+input/*
+output/*
+models/*
+
+!.gitkeep
+!.gitignore
+.DS_Store

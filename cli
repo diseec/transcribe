@@ -1,0 +1,56 @@
+#!/bin/sh
+# Launcher. Runs the app straight from this checkout rather than from an installed
+# copy, so a second checkout (or a review copy) is runnable without reinstalling.
+set -eu
+
+ROOT=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+
+# The package is imported from ./src, which must come before any site-packages so
+# this checkout wins even if another copy was ever installed into the interpreter.
+PYTHONPATH="$ROOT/src${PYTHONPATH:+:$PYTHONPATH}"
+export PYTHONPATH
+
+# Prefer an interpreter that can actually run the app, so a bare `python3` without
+# the dependencies does not fail with an import traceback.
+# The name the user invoked, inherited by the app so any "run this next" suggestion in
+# its output names a command that exists. Without it the app would report ``app.py``,
+# which is the internal entry point and not something anyone can type.
+WHISPERX_LAUNCHER="$0"
+export WHISPERX_LAUNCHER
+
+PYTHON=""
+for candidate in "$ROOT/.venv/bin/python" "${WHISPERX_PYTHON:-}" python3; do
+        [ -n "$candidate" ] || continue
+        if [ -x "$candidate" ] || command -v "$candidate" >/dev/null 2>&1; then
+                if "$candidate" -c 'import rich' >/dev/null 2>&1; then
+                        PYTHON=$candidate
+                        break
+                fi
+        fi
+done
+
+if [ -z "$PYTHON" ]; then
+        cat >&2 <<'MISSING'
+No Python interpreter with the required packages was found.
+
+Install them once with:
+
+    ./cli install
+
+Or point at an interpreter that already has them:
+
+    WHISPERX_PYTHON=/path/to/python ./cli
+MISSING
+        exit 1
+fi
+
+case "${1:-}" in
+        "") set -- menu ;;
+        menu|transcribe|composer|compare|run|status|install|resources|selftest|config|preset|doctor|jobs|-*) ;;
+        # A path on its own is the one-shot request: transcribe this, with fixed settings.
+        # Not ``run``, which resolves the user's saved defaults -- the point of the short
+        # form is that it behaves the same whoever runs it.
+        *) set -- transcribe "$@" ;;
+esac
+
+exec "$PYTHON" "$ROOT/src/whisperx_local/cli/app.py" "$@"
