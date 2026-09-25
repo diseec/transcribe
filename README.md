@@ -1,23 +1,44 @@
 # whisperx-local
 
-Local transcription for Persian and English recordings. Everything runs on this
-machine; no audio leaves it.
+[![Ubuntu CI](https://github.com/diseec/transcribe/actions/workflows/ubuntu.yml/badge.svg)](https://github.com/diseec/transcribe/actions/workflows/ubuntu.yml)
+[![Python 3.10–3.13](https://img.shields.io/badge/python-3.10%E2%80%933.13-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-2ea44f.svg)](LICENSE)
 
-Built around four ideas:
+**Private, resumable transcription for Persian and English audio and video.**
+WhisperX Local turns recordings into timestamped transcripts on your own machine,
+with optional word alignment, speaker labels, comparison, and export formats.
 
-- **No typing required.** Run `./cli` and you are shown a menu. Every screen offers the
-  available answers with the current one marked, so pressing Enter is a valid way
-  through. Nothing needs a flag name to be remembered or spelled correctly.
-- **Any subset of work.** Transcription, alignment, speaker separation, export and
-  analysis are independent actions. Asking for one does not drag the others along, and
-  if what it needs is already on disk, nothing else runs.
-- **Nothing is ever lost.** The recognised text is written before anything else is
-  attempted, to its own file that is never cleaned and never overwritten. A finished
-  chunk is never recomputed. The slowest and most fragile stages can only cost you
-  their own embellishment, never a word.
-- **A short transcript cannot pass as a complete one.** Every run states how much of the
-  recording it covered, names any stretch it could not do, and exits with an error
-  rather than reporting success.
+No hosted account is required for ordinary transcription. The recording is processed
+locally; model downloads are separate setup traffic, and no transcription service is
+required.
+
+## Why people use it
+
+- **Start with one command.** Run `./cli recording.m4a` and get a readable transcript.
+- **Use a guided workflow or scripts.** The menu is friendly for people; stable commands
+  and fixed one-shot settings are predictable for automation.
+- **Resume long recordings.** Work is chunked, cached, and retried without recomputing
+  completed chunks.
+- **Keep the raw result.** Canonical timestamped recognition is written before optional
+  alignment, speaker separation, formatting, or analysis.
+- **Know when something went wrong.** Missing coverage is reported as gaps and produces a
+  non-zero exit status instead of looking like a complete transcript.
+- **Run on more than one machine.** Ubuntu `x86_64` and `aarch64`, macOS Apple Silicon,
+  and CPU-first fallback execution are supported by the repository's setup path.
+
+## At a glance
+
+| Input                                   | Output                                          | Optional stages                               |
+| --------------------------------------- | ----------------------------------------------- | --------------------------------------------- |
+| Audio or video files accepted by FFmpeg | `.txt`, `.srt`, `.vtt`, `.tsv`, `.json`, `.aud` | Word timings, speaker turns, quality analysis |
+
+The project is deliberately local-first rather than a hosted transcription service.
+It is a good fit for meetings, interviews, screen recordings, research notes, and
+automation where the original audio should remain under your control.
+
+**Project links:** [Contributing](CONTRIBUTING.md) · [Support](SUPPORT.md) ·
+[Security](SECURITY.md) · [Changelog](CHANGELOG.md) ·
+[Third-party notices](THIRD_PARTY_NOTICES.md)
 
 ## Getting started
 
@@ -401,22 +422,24 @@ What reads the audio is a seam, not an assumption. One function builds a command
 one reads the file that command wrote; everything downstream -- chunking, coverage,
 alignment, the canonical transcript -- sees one shape and does not care who produced it.
 
-| `--engine`   | What it is                               | State                                                  |
-| ------------ | ---------------------------------------- | ------------------------------------------------------ |
-| `whispercpp` | whisper.cpp, which reaches the Metal GPU | **the default** -- several times faster, same weights  |
-| `whisperx`   | WhisperX driving CTranslate2, on the CPU | the fallback, used whenever whisper.cpp is not present |
+| `--engine`   | What it is                                | State                                             |
+| ------------ | ----------------------------------------- | ------------------------------------------------- |
+| `whispercpp` | whisper.cpp with native host acceleration | optional; the macOS default when installed        |
+| `whisperx`   | WhisperX driving CTranslate2, on the CPU  | the Linux default and the cross-platform fallback |
 
 `whisperx` is a wrapper around the exact command and reader that were already there, and
 there is a test asserting that, because a seam is precisely the change that alters an
-output filename nobody meant to touch. `whispercpp` is the default because it measured
-several times faster on the same audio at the same weights -- the table below has the
-numbers, and `./cli status` says whether it is installed here.
+output filename nobody meant to touch. `whispercpp` is the macOS default when available
+because it measured several times faster on the same audio at the same weights. Linux
+defaults to WhisperX because `./cli install` can set it up without a separate native
+binary build. `./cli status` says which engine is ready on the current machine.
 
 ### Trying whisper.cpp
 
-It is the default because CTranslate2 has no Metal backend and whisper.cpp does — so it is
-the only route here to the GPU on this machine. It cannot run until the parts are present,
-and it says which is missing rather than failing halfway:
+On macOS, it is the route to the Metal GPU because CTranslate2 has no Metal backend. On
+Linux, it can use native CPU or accelerator support from the whisper.cpp build. It cannot
+run until the binary and model are present, and it says which is missing rather than
+failing halfway:
 
 ```bash
 brew install whisper.cpp                 # the binary, 6.5 MB plus a 19 MB ggml dependency

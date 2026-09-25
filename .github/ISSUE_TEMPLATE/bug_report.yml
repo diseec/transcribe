@@ -1,0 +1,56 @@
+name: Bug report
+description: Report a reproducible problem without sharing private media.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not attach recordings, transcripts, model caches, `.env` files, or tokens.
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Describe the observed behavior and the behavior you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Include the smallest command and steps that reproduce the problem. Remove private paths and secrets.
+      render: shell
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: Operating system and architecture
+      placeholder: Ubuntu 24.04, x86_64
+    validations:
+      required: true
+  - type: input
+    id: python
+    attributes:
+      label: Python version
+      placeholder: Python 3.12.4
+    validations:
+      required: true
+  - type: input
+    id: backend
+    attributes:
+      label: Engine/backend
+      placeholder: whisperx or whispercpp
+  - type: textarea
+    id: status
+    attributes:
+      label: Sanitized status output
+      description: Paste `./cli status` after removing personal paths and secrets.
+      render: text
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Paste the smallest relevant error excerpt and remove sensitive data.
+      render: text

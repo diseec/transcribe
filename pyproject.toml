@@ -3,7 +3,25 @@ name = "whisperx-local"
 version = "0.2.0"
 description = "Local, observable transcription for Persian and English meetings"
 license = { file = "LICENSE" }
+readme = "README.md"
 requires-python = ">=3.10,<3.14"
+keywords = ["transcription", "speech-to-text", "whisper", "persian", "diarization", "local-first"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+urls = { Homepage = "https://github.com/diseec/transcribe", Repository = "https://github.com/diseec/transcribe", Issues = "https://github.com/diseec/transcribe/issues" }
 dependencies = [
     "rich>=13.9,<16",
     "whisperx==3.8.6",
