@@ -1,16 +1,21 @@
-# whisperx-local
+# Transcribe
 
 [![Ubuntu CI](https://github.com/diseec/transcribe/actions/workflows/ubuntu.yml/badge.svg)](https://github.com/diseec/transcribe/actions/workflows/ubuntu.yml)
 [![Python 3.10–3.13](https://img.shields.io/badge/python-3.10%E2%80%933.13-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-2ea44f.svg)](LICENSE)
 
-**Private, resumable transcription for Persian and English audio and video.**
-WhisperX Local turns recordings into timestamped transcripts on your own machine,
-with optional word alignment, speaker labels, comparison, and export formats.
+<p align="center">
+  <img src="assets/banner.png" alt="Transcribe banner" width="100%">
+</p>
 
-No hosted account is required for ordinary transcription. The recording is processed
-locally; model downloads are separate setup traffic, and no transcription service is
-required.
+**Your recordings. Searchable, shareable, and still yours.**
+
+Transcribe turns Persian and English audio or video into precise, timestamped text on
+your own machine. Start with a recording and leave with transcripts, subtitles, speaker
+labels, and exports that are ready to review or share.
+
+No hosted account. No upload queue. Your recording is processed locally; model downloads
+are separate setup traffic, and no transcription service is required.
 
 ## Why people use it
 
@@ -35,6 +40,9 @@ required.
 The project is deliberately local-first rather than a hosted transcription service.
 It is a good fit for meetings, interviews, screen recordings, research notes, and
 automation where the original audio should remain under your control.
+
+**Built for technical users:** Transcribe uses WhisperX for its cross-platform
+transcription pipeline and can use whisper.cpp for native acceleration.
 
 **Project links:** [Contributing](CONTRIBUTING.md) · [Support](SUPPORT.md) ·
 [Security](SECURITY.md) · [Changelog](CHANGELOG.md) ·
