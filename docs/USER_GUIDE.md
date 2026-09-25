@@ -81,12 +81,12 @@ run analysis without repeating expensive stages.
 
 ## Profiles and Settings
 
-| Profile | Best for | Tradeoff |
-| --- | --- | --- |
-| `fast` | First passes and high-throughput work | Narrow decoding search |
-| `balanced` | Everyday transcription | Default balance |
-| `accurate` | Important transcripts | Wider search and longer runtime |
-| `maximum` | Investigating difficult passages | Full precision and highest cost |
+| Profile    | Best for                              | Tradeoff                        |
+| ---------- | ------------------------------------- | ------------------------------- |
+| `fast`     | First passes and high-throughput work | Narrow decoding search          |
+| `balanced` | Everyday transcription                | Default balance                 |
+| `accurate` | Important transcripts                 | Wider search and longer runtime |
+| `maximum`  | Investigating difficult passages      | Full precision and highest cost |
 
 Profiles set sensible groups of model, precision, search, batching, VAD, and thread
 options. Explicit flags still win. Under memory pressure, Transcribe lowers batch size,

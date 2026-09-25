@@ -5,10 +5,10 @@ alignment, speakers, and exports behave consistently across runtimes.
 
 ## Recognition Engines
 
-| Engine | Runtime | Default use |
-| --- | --- | --- |
-| `whisperx` | WhisperX with CTranslate2 | Linux default and cross-platform CPU path |
-| `whispercpp` | Native whisper.cpp binary | macOS default and optional Linux runtime |
+| Engine       | Runtime                   | Default use                               |
+| ------------ | ------------------------- | ----------------------------------------- |
+| `whisperx`   | WhisperX with CTranslate2 | Linux default and cross-platform CPU path |
+| `whispercpp` | Native whisper.cpp binary | macOS default and optional Linux runtime  |
 
 WhisperX transcription is CPU-oriented in this application. whisper.cpp can use the native
 acceleration available in its build, including Metal on Apple Silicon. `./cli status`

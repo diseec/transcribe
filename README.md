@@ -61,18 +61,18 @@ one-path automation command.
 
 ## Everything you need, from first pass to final copy
 
-| | Capability | What it gives you |
-| --- | --- | --- |
-| **Fast starts** | One path in, transcript out | Drop in audio or video and get readable text with no settings to learn. |
-| **Flexible quality** | Four tuned profiles | Move from a fast first pass to wide-beam, full-precision decoding. |
-| **Any compatible model** | Named models and repository IDs | Choose the size, speed, language coverage, and accuracy tradeoff your work needs. |
-| **Multiple runtimes** | WhisperX and whisper.cpp | Keep a dependable cross-platform path and use native acceleration where available. |
-| **Word-level timing** | Optional alignment | Produce precise timing for review, subtitles, and downstream tools. |
-| **Speaker labels** | Optional diarization | Turn conversations into readable speaker-attributed transcripts. |
-| **Production formats** | TXT, SRT, VTT, TSV, JSON, Audacity labels | Move directly into editing, publishing, analysis, or another pipeline. |
-| **Composable stages** | Prepare, transcribe, align, diarize, export, analyze | Run only what changed and reuse everything that is still valid. |
-| **Transcript comparison** | Time-aware difference analysis | Compare engines, models, profiles, and difficult passages without guessing. |
-| **Automation-ready** | Stable commands, exit codes, plain redirected output | Use Transcribe from scripts, agents, batch jobs, and larger media pipelines. |
+|                           | Capability                                           | What it gives you                                                                  |
+| ------------------------- | ---------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| **Fast starts**           | One path in, transcript out                          | Drop in audio or video and get readable text with no settings to learn.            |
+| **Flexible quality**      | Four tuned profiles                                  | Move from a fast first pass to wide-beam, full-precision decoding.                 |
+| **Any compatible model**  | Named models and repository IDs                      | Choose the size, speed, language coverage, and accuracy tradeoff your work needs.  |
+| **Multiple runtimes**     | WhisperX and whisper.cpp                             | Keep a dependable cross-platform path and use native acceleration where available. |
+| **Word-level timing**     | Optional alignment                                   | Produce precise timing for review, subtitles, and downstream tools.                |
+| **Speaker labels**        | Optional diarization                                 | Turn conversations into readable speaker-attributed transcripts.                   |
+| **Production formats**    | TXT, SRT, VTT, TSV, JSON, Audacity labels            | Move directly into editing, publishing, analysis, or another pipeline.             |
+| **Composable stages**     | Prepare, transcribe, align, diarize, export, analyze | Run only what changed and reuse everything that is still valid.                    |
+| **Transcript comparison** | Time-aware difference analysis                       | Compare engines, models, profiles, and difficult passages without guessing.        |
+| **Automation-ready**      | Stable commands, exit codes, plain redirected output | Use Transcribe from scripts, agents, batch jobs, and larger media pipelines.       |
 
 ## Start transcribing
 
@@ -97,12 +97,12 @@ selective stages, network modes, outputs, and transcript comparison.
 
 ## One tool, four ways to work
 
-| Workflow | Best for | Start with |
-| --- | --- | --- |
-| **Guided** | A clear path from recording to result | `./cli` |
-| **One-shot** | Scripts, agents, and repeatable batch work | `./cli recording.m4a` |
+| Workflow         | Best for                                              | Start with                |
+| ---------------- | ----------------------------------------------------- | ------------------------- |
+| **Guided**       | A clear path from recording to result                 | `./cli`                   |
+| **One-shot**     | Scripts, agents, and repeatable batch work            | `./cli recording.m4a`     |
 | **Configurable** | Exact control over model, quality, stages, and output | `./cli run recording.m4a` |
-| **Composer** | Building and revising complex jobs interactively | `./cli composer` |
+| **Composer**     | Building and revising complex jobs interactively      | `./cli composer`          |
 
 Every workflow resolves to the same staged pipeline and artifact contracts. Moving from a
 menu to automation does not mean adopting a second tool or a different output format.
@@ -185,11 +185,11 @@ run remains in the output location.
 
 ## Platforms and runtimes
 
-| Platform | Architecture | Default recognition path | Notes |
-| --- | --- | --- | --- |
-| **macOS** | Apple Silicon | whisper.cpp | Metal acceleration; most heavily tuned target |
-| **Linux** | `x86_64` / `amd64` | WhisperX | Standard installer path |
-| **Linux** | `aarch64` / `arm64` | WhisperX | Native environment required |
+| Platform  | Architecture        | Default recognition path | Notes                                         |
+| --------- | ------------------- | ------------------------ | --------------------------------------------- |
+| **macOS** | Apple Silicon       | whisper.cpp              | Metal acceleration; most heavily tuned target |
+| **Linux** | `x86_64` / `amd64`  | WhisperX                 | Standard installer path                       |
+| **Linux** | `aarch64` / `arm64` | WhisperX                 | Native environment required                   |
 
 Whisper.cpp is also available on Linux when built for the target machine. Virtual
 environments must be created on their destination OS and architecture; compatible model
@@ -207,16 +207,16 @@ of its access terms. Models and dependencies retain their own licenses; review
 
 ## Documentation
 
-| Guide | Use it when you need to... |
-| --- | --- |
-| [User Guide](docs/USER_GUIDE.md) | Install, choose a workflow, configure stages, save presets, or understand outputs |
-| [Engines and Models](docs/ENGINES_AND_MODELS.md) | Choose a runtime or model, prepare Apple Silicon/Linux, or work offline |
-| [Reliability](docs/RELIABILITY.md) | Understand resume, retries, cache invalidation, coverage, and exit behavior |
-| [Benchmarks](docs/BENCHMARKS.md) | Review measured speed/quality tradeoffs and benchmark limitations |
-| [Architecture](docs/ARCHITECTURE.md) | Extend the implementation or understand internal boundaries |
-| [Contributing](CONTRIBUTING.md) | Set up development and submit a focused change |
-| [Support](SUPPORT.md) | Report a reproducible problem without exposing private media |
-| [Security](SECURITY.md) | Report a vulnerability privately |
+| Guide                                            | Use it when you need to...                                                        |
+| ------------------------------------------------ | --------------------------------------------------------------------------------- |
+| [User Guide](docs/USER_GUIDE.md)                 | Install, choose a workflow, configure stages, save presets, or understand outputs |
+| [Engines and Models](docs/ENGINES_AND_MODELS.md) | Choose a runtime or model, prepare Apple Silicon/Linux, or work offline           |
+| [Reliability](docs/RELIABILITY.md)               | Understand resume, retries, cache invalidation, coverage, and exit behavior       |
+| [Benchmarks](docs/BENCHMARKS.md)                 | Review measured speed/quality tradeoffs and benchmark limitations                 |
+| [Architecture](docs/ARCHITECTURE.md)             | Extend the implementation or understand internal boundaries                       |
+| [Contributing](CONTRIBUTING.md)                  | Set up development and submit a focused change                                    |
+| [Support](SUPPORT.md)                            | Report a reproducible problem without exposing private media                      |
+| [Security](SECURITY.md)                          | Report a vulnerability privately                                                  |
 
 ## Open source
 
