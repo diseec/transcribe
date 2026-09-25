@@ -1,11 +1,11 @@
 [project]
 name = "whisperx-local"
 version = "0.2.0"
-description = "Private, resumable Persian and English transcription for audio and video"
+description = "Local-first, resumable transcription for audio, video, and automated pipelines"
 license = { file = "LICENSE" }
 readme = "README.md"
 requires-python = ">=3.10,<3.14"
-keywords = ["transcription", "speech-to-text", "whisper", "persian", "english", "diarization", "word-alignment", "audio", "video", "local-first", "privacy"]
+keywords = ["transcription", "speech-to-text", "whisper", "multilingual", "persian", "english", "diarization", "word-alignment", "audio", "video", "automation", "local-first", "privacy"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Console",
