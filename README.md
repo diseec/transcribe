@@ -31,6 +31,15 @@ Built around four ideas:
 Speaker labels need a Hugging Face read token. Copy `.env.example` to `.env` and add
 it, or leave speakers switched off in the menu. Everything else works without it.
 
+### Licensing and downloaded models
+
+The application code is released under the MIT License. Dependencies, FFmpeg,
+and downloaded speech models are separate components with their own licenses.
+The speaker-diarization model currently used by the optional speaker stage is
+licensed CC-BY-4.0 and requires accepting its Hugging Face access conditions.
+See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) before redistributing a
+packaged environment, model files, or generated bundle.
+
 ### Ubuntu on x86_64 and aarch64
 
 Ubuntu is supported on both 64-bit Intel/AMD (`x86_64`, also called `amd64`) and
